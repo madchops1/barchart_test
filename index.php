@@ -86,6 +86,7 @@ class calendar_notes {
       
       if($first_day_of_week > 1){
         $output .= "<td>&nbsp;</td>";
+        $first_day_of_week--;
         continue;
       }
       
