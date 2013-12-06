@@ -92,7 +92,7 @@ class calendar_notes {
       }
       
       // -- A Day...
-      $this_day = mktime(0,0,$day,$this->month,$this->year);
+      $this_day = mktime(0,0,0,$this->month,$day,$this->year);
       $date = date('m/d/y', $this_day);
       
       $output .= "<td><div><span>" . $date . "</span><br><input val=''/></div></td>";
