@@ -84,7 +84,7 @@ class calendar_notes {
     while($day <= $days_in_month){
       $i++;
       
-      if($first_day_of_week > 1){
+      if($first_day_of_week > 0){
         $output .= "<td>&nbsp;</td>";
         $first_day_of_week--;
         continue;
@@ -94,7 +94,7 @@ class calendar_notes {
       $output .= "<td><div><span>" . $day . "</span></div></td>";
       
       // Weekly Rows
-      if(!($day%7)){
+      if(!($i%7)){
         $output .= "  </tr><tr>";
       }
       $day++; 
