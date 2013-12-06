@@ -57,7 +57,7 @@ class calendar_notes {
     // Create array containing abbreviations of days of week.
     $days_of_week = array('S','M','T','W','T','F','S');
     $first_day = mktime(0,0,0,$month,1,$year);
-    $days_in_month = date($t,$first_day);
+    $days_in_month = date('t',$first_day);
     $date_info = getdate($first_day);
     
     
