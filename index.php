@@ -83,7 +83,7 @@ class calendar_notes {
       $output .= "<td><div><span>" . $day . "</span></div></td>";
       
       // Weekly Rows
-      if(!(($day-1)%7)){
+      if(!($day%7)){
         $output .= "  </tr><tr>";
       }
       $day++; 
