@@ -79,7 +79,7 @@ class calendar_notes {
     if(isset($_POST['day'])){
       $day=1;
       foreach($_POST['day'] as $note){
-        if($_POST['day'] != '' && $_POST['day'] != 'please enter a note'){
+        if($note != '' && $note != 'please enter a note'){
           // -- Insert
           $date = mktime(0,0,0,$this->month,$day,$this->year);
           $date = date('Y-m-d', $date);
