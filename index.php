@@ -58,7 +58,13 @@ class calendar_notes {
     $days_of_week = array('S','M','T','W','T','F','S');
     $first_day = mktime(0,0,0,$month,1,$year);
     $days_in_month = date($t,$first_day);
-    $output = "<table id='calendar'>";
+    $date_info = getdate($first_day);
+    
+    
+    
+    $output = "First Day: " . $first_day . " | Days in Month: " .$days_in_month . "";
+    $output .= "<h1>".$date_info['month']."</h1>";
+    $output .= "<table id='calendar'>";
     $output .= "  <tr>";
     
     // -- Header
