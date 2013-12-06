@@ -66,8 +66,9 @@ class calendar_notes {
     echo "</pre>";
     
     $output = "First Day: " . $first_day . " | First Day of Week: " . $first_day_of_week . " | Days in Month: " .$days_in_month . "";
+    $output .= "<div id='calendar-wrapper'>";
     $output .= "<h1>".$date_info['month']."</h1>";
-    $output .= "<div id='calendar-wrapper'><table id='calendar'>";
+    $output .= "<table id='calendar'>";
     $output .= "  <tr>";
     
     // -- Header
@@ -75,10 +76,9 @@ class calendar_notes {
       $output .= "  <th>$day</th>";
     }
     
-    
     $output .= "  </tr><tr>";
     
-    
+    // -- Loop through the days of the month
     $day = 1;
     $i = 0;
     while($day <= $days_in_month){
@@ -94,20 +94,16 @@ class calendar_notes {
       // -- A Day...
       $this_day = mktime(0,0,0,$this->month,$day,$this->year);
       $date = date('m/d/y', $this_day);
+      $output .= "<td><div><span>" . $date . "</span><br><input val='please enter a note'/></div></td>";
       
-      $output .= "<td><div><span>" . $date . "</span><br><input val=''/></div></td>";
-      
-      // Weekly Rows
+      // -- Weekly Rows
       if(!($i%7)){
         $output .= "  </tr><tr>";
       }
       $day++; 
     }
     
-    
-    
     $output .= "</tr></table></div>";
-    
     return $output;
   }
   
@@ -128,11 +124,14 @@ $db = new db;
 		<style>
 		  #calendar-wrapper{
 		    margin:100px auto;
-		    width:600px;
+		    width:700px;
 		  }
 		  
 		  input{
-		    width:50px;
+		    width:100px;
+		    font-size:12px;
+		    font-family:georgia;
+		    font-style:italic;
 		  }
 		  
 		  td{
