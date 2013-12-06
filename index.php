@@ -26,7 +26,7 @@ if(isset($_POST)){
   </head>
 	<body>
 	  <?php 
-	    echo $calendar->buildCalendar();
+	    echo $calendar->build_calendar();
 	  ?>
 	</body>
 </html>
