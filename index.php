@@ -1,19 +1,58 @@
 <?php 
+/**
+ * Barchart Test
+ * @author karlsteltenpohl
+ */
 
-// -- The Class
-class calendar_notes{
+// -- Report All Errors, We Are Very Strict
+error_reporting(E_ALL);                 
+
+// --  Data Layer
+class db {
+  
+  var $db_host                     = 'localhost';
+  var $db_name                     = 'barchart';
+  var $db_user                     = 'barchart';
+  var $db_pass                     = 'Barchart1';
+  
+  function __construct() {
+    $this->dbConnect();
+  }
+  
+  function dbConnect() {
+    // Connect to the Database
+    mysql_connect($this->db_host, $this->db_user, $this->db_pass);
+    mysql_select_db($this->db_name);
+    unset($this->db_pass);
+    return true;
+  }
+  
+  function dbQuery($query) {
+    $queried = mysql_query($query);
+    if(mysql_error()){
+      echo mysql_error();
+    }
+    return $queried;
+  }
+  
+}
+
+// -- The Calendar / Notes Class
+class calendar_notes {
   
   // -- Defaults Variables
   var $days_of_week = array('S','M','T','W','T','F','S');
   var $month;
   var $year;
   
+  // -- constructor
   function __construct(){
     $this->month = date('m');
     $this->year = date('Y');
     echo $this->build_calendar();
   }
   
+  // -- Build the calendar
   function build_calendar(){
     // Create array containing abbreviations of days of week.
     $days_of_week = array('S','M','T','W','T','F','S');
@@ -122,5 +161,9 @@ class calendar_notes{
   
   
 }
+
+
+$db = new db;
+$calendar = new calendar_notes;
 
 ?>
