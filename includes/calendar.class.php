@@ -10,11 +10,11 @@ class calendar_notes {
 
   // -- constructor
   function __construct(){
-    $this->month = date('m')+1;
+    $this->month = date('m');
     $this->year = date('Y');
   }
 
-  // -- Build the calendar
+  // -- Build the calendar, return html
   function build_calendar(){
     // Create array containing abbreviations of days of week.
     $days_of_week = array('S','M','T','W','T','F','S');
@@ -23,11 +23,7 @@ class calendar_notes {
     $days_in_month = date('t',$first_day);
     $date_info = getdate($first_day);
 
-    //echo "<pre>";
-    //var_dump($date_info);
-    //echo "</pre>";
     $output = "";
-    $output = "First Day: " . $first_day . " | First Day of Week: " . $first_day_of_week . " | Days in Month: " .$days_in_month . "";
     $output .= "<div id='calendar-wrapper'>";
     $output .= "<h1>".$date_info['month']."</h1>";
     $output .= "<form action='' method='post'>";
@@ -38,7 +34,6 @@ class calendar_notes {
     foreach($days_of_week as $day) {
       $output .= "  <th>$day</th>";
     }
-
     $output .= "  </tr><tr>";
 
     // -- Loop through the days of the month
@@ -97,6 +92,7 @@ class calendar_notes {
     }
   }
   
+  // -- Get Notes
   function get_notes($date){
     $notes = array();
     $date = date('Y-m-d',$date);
