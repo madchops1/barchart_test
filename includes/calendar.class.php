@@ -88,6 +88,7 @@ class calendar_notes {
           $insert = "INSERT INTO `calendar` SET date='".$date."', note='".mysql_real_escape_string($note)."' ";
           $this->db->db_query($insert);
         }
+        $day++;
       }
     }
   }
