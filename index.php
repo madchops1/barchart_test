@@ -130,6 +130,10 @@ $db = new db;
 		    margin:100px auto;
 		    width:600px;
 		  }
+		  
+		  input{
+		    width:50px;
+		  }
 		</style>
 		
 		<script>
