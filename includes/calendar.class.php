@@ -71,7 +71,7 @@ class calendar_notes {
     $output .= "</tr></table>";
     $output .= "<input type='hidden' name='month' value='" . $this->month . "' />";
     $output .= "<input type='hidden' name='year' value='" . $this->year . "' />";
-    $output .= "<input type='submit' value='Save &amp; Display' />";
+    $output .= "<br><input type='submit' value='Save &amp; Display' />";
     $output .= "</form></div>";
     return $output;
   }
