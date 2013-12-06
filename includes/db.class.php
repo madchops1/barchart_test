@@ -8,10 +8,10 @@ class db {
   var $db_pass                     = 'Barchart1';
 
   function __construct() {
-    $this->dbConnect();
+    $this->db_connect();
   }
 
-  function dbConnect() {
+  function db_connect() {
     // Connect to the Database
     mysql_connect($this->db_host, $this->db_user, $this->db_pass);
     mysql_select_db($this->db_name);
@@ -19,7 +19,7 @@ class db {
     return true;
   }
 
-  function dbQuery($query) {
+  function db_query($query) {
     $queried = mysql_query($query);
     if(mysql_error()){
       echo mysql_error();

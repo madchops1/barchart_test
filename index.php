@@ -7,6 +7,12 @@ error_reporting(E_ALL);
 include 'includes/db.class.php';
 include 'includes/calendar.class.php';
 $db = new db;
+$calendar = new calendar_notes;
+
+if(isset($_POST)){
+  $calendar->save_notes;
+}
+
 ?>
 <!doctype html>
 <html>
@@ -18,7 +24,7 @@ $db = new db;
   </head>
 	<body>
 	  <?php 
-	    $calendar = new calendar_notes;
+	    echo $calendar->buildCalendar;
 	  ?>
 	</body>
 </html>

@@ -11,7 +11,6 @@ class calendar_notes {
   function __construct(){
     $this->month = date('m')-1;
     $this->year = date('Y');
-    echo $this->build_calendar();
   }
 
   // -- Build the calendar
@@ -74,5 +73,20 @@ class calendar_notes {
     return $output;
   }
 
+  // -- Save Notes
+  function save_notes(){
+    if(isset($_POST)){
+      $day=1;
+      foreach($_POST['day'] as $note){
+        if($_POST['day'] != ''){
+          // -- Insert
+          $date = mktime(0,0,0,$this->month,$day,$this->year);
+          $date = date('Y-m-d', $date);
+          $insert = "INSERT INTO `calendar` SET date='".$date."', note='".mysql_real_escape_string($note)."' ";
+          $db->db_query($insert);
+        }
+      }
+    }
+  }
 }
 ?>
