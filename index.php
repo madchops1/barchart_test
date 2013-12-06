@@ -60,7 +60,9 @@ class calendar_notes {
     $days_in_month = date('t',$first_day);
     $date_info = getdate($first_day);
     
-    
+    echo "<pre>";
+    var_dump($date_info);
+    echo "</pre>";
     
     $output = "First Day: " . $first_day . " | Days in Month: " .$days_in_month . "";
     $output .= "<h1>".$date_info['month']."</h1>";
