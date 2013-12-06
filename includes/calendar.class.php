@@ -27,7 +27,7 @@ class calendar_notes {
     //var_dump($date_info);
     //echo "</pre>";
     $output = "";
-    //$output = "First Day: " . $first_day . " | First Day of Week: " . $first_day_of_week . " | Days in Month: " .$days_in_month . "";
+    $output = "First Day: " . $first_day . " | First Day of Week: " . $first_day_of_week . " | Days in Month: " .$days_in_month . "";
     $output .= "<div id='calendar-wrapper'>";
     $output .= "<h1>".$date_info['month']."</h1>";
     $output .= "<form action='' method='post'>";
