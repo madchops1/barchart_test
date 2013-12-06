@@ -59,16 +59,33 @@ class calendar_notes {
     $first_day = mktime(0,0,0,$month,1,$year);
     $days_in_month = date($t,$first_day);
     $output = "<table id='calendar'>";
+    $output .= "  <tr>";
     
     // -- Header
-    $output .= "  <tr>";
     foreach($days_of_week as $day) {
       $output .= "  <th>$day</th>";
     }
-    $output .= "  </tr>";
     
     
-    $output .= "</table>";
+    $output .= "  </tr><tr>";
+    
+    
+    $day = 1;
+    while($day <= $days_in_month){
+      
+      // Days
+      $output .= "<td><div><span>" . $day . "</span></div></td>";
+      
+      // Weekly Rows
+      if(!($i%7)){
+        $output .= "  </tr><tr>";
+      }
+      $day++; 
+    }
+    
+    
+    
+    $output .= "</tr></table>";
     /*
     // What is the first day of the month in question?
     $firstDayOfMonth = mktime(0,0,0,$month,1,$year);
