@@ -88,5 +88,6 @@ class calendar_notes {
       }
     }
   }
+  
 }
 ?>
