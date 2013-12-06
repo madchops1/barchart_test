@@ -57,6 +57,7 @@ class calendar_notes {
       // -- A Day...
       $this_day = mktime(0,0,0,$this->month,$day,$this->year);
       $date = date('m/d/y', $this_day);
+      $notes = $this->get_notes($this_day);
       $output .= "<td><div><span>" . $date . "</span><br><input name='day[]' value='please enter a note'/></div></td>";
 
       // -- Weekly Rows
@@ -88,6 +89,13 @@ class calendar_notes {
         }
       }
     }
+  }
+  
+  function get_notes($date){
+    $notes = array();
+    $date = date('Y-m-d',$date);
+    //$select = "SELECT `note` FROM `calendar` WHERE date=''"; 
+    return $notes;
   }
   
 }
