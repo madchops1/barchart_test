@@ -57,7 +57,7 @@ class calendar_notes {
       // -- A Day...
       $this_day = mktime(0,0,0,$this->month,$day,$this->year);
       $date = date('m/d/y', $this_day);
-      $output .= "<td><div><span>" . $date . "</span><br><input value='please enter a note'/></div></td>";
+      $output .= "<td><div><span>" . $date . "</span><br><input name='day[]' value='please enter a note'/></div></td>";
 
       // -- Weekly Rows
       if(!($i%7)){
@@ -67,6 +67,8 @@ class calendar_notes {
     }
 
     $output .= "</tr></table>";
+    $output .= "<input type='hidden' name='month' value='" . $this->month . "' />";
+    $output .= "<input type='hidden' name='year' value='" . $this->year . "' />";
     $output .= "<input type='submit' value='Save &amp; Display' />";
     $output .= "</form></div>";
     return $output;
