@@ -10,7 +10,7 @@ class calendar_notes {
 
   // -- constructor
   function __construct(){
-    $this->month = date('m')-1;
+    $this->month = date('m');
     $this->year = date('Y');
   }
 
@@ -58,7 +58,13 @@ class calendar_notes {
       $this_day = mktime(0,0,0,$this->month,$day,$this->year);
       $date = date('m/d/y', $this_day);
       $notes = $this->get_notes($this_day);
-      $output .= "<td><div><span>" . $date . "</span><br><input name='day[]' value='please enter a note'/></div></td>";
+      
+      $notes_html = "";
+      foreach($notes as $note){
+        $notes_html .= "<br>".$note;
+      }
+      
+      $output .= "<td><div><span>" . $date . "</span>".$notes_html."<br><input name='day[]' value='please enter a note'/></div></td>";
 
       // -- Weekly Rows
       if(!($i%7)){
@@ -94,7 +100,11 @@ class calendar_notes {
   function get_notes($date){
     $notes = array();
     $date = date('Y-m-d',$date);
-    //$select = "SELECT `note` FROM `calendar` WHERE date=''"; 
+    $select = "SELECT `note` FROM `calendar` WHERE date='".$date."'";
+    $result = $this->db->db_query($select);
+    while($note = mysql_fetch_object($result)){
+      $notes[] = $note->note;
+    } 
     return $notes;
   }
   
