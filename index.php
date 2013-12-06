@@ -67,7 +67,7 @@ class calendar_notes {
     
     $output = "First Day: " . $first_day . " | First Day of Week: " . $first_day_of_week . " | Days in Month: " .$days_in_month . "";
     $output .= "<h1>".$date_info['month']."</h1>";
-    $output .= "<table id='calendar'>";
+    $output .= "<div id='calendar-wrapper'><table id='calendar'>";
     $output .= "  <tr>";
     
     // -- Header
@@ -84,14 +84,18 @@ class calendar_notes {
     while($day <= $days_in_month){
       $i++;
       
+      // -- Make sure the first day of the month is on the right day of the week
       if($first_day_of_week > 0){
         $output .= "<td>&nbsp;</td>";
         $first_day_of_week--;
         continue;
       }
       
-      // Days
-      $output .= "<td><div><span>" . $day . "</span></div></td>";
+      // -- A Day...
+      $this_day = mktime(0,0,$day,$this->month,$this->year);
+      $date = date('m/d/y', $this_day);
+      
+      $output .= "<td><div><span>" . $date . "</span><br><input val=''/></div></td>";
       
       // Weekly Rows
       if(!($i%7)){
@@ -102,94 +106,8 @@ class calendar_notes {
     
     
     
-    $output .= "</tr></table>";
-    /*
-    // What is the first day of the month in question?
-    $firstDayOfMonth = mktime(0,0,0,$month,1,$year);
+    $output .= "</tr></table></div>";
     
-    // How many days does this month contain?
-    $numberDays = date('t',$firstDayOfMonth);
-    
-    // Retrieve some information about the first day of the
-    // month in question.
-    $dateComponents = getdate($firstDayOfMonth);
-    
-    // What is the name of the month in question?
-    $monthName = $dateComponents['month'];
-    
-    // What is the index value (0-6) of the first day of the
-    // month in question.
-    $dayOfWeek = $dateComponents['wday'];
-    
-    // Create the table tag opener and day headers
-    
-    
-    //$output .= "<caption>$monthName $year</caption>";
-    $output .= "<tr>";
-    
-    // Create the calendar headers
-    
-    foreach($daysOfWeek as $day) {
-      $output .= "<th class='header'>$day</th>";
-    }
-    
-    // Create the rest of the calendar
-    
-    // Initiate the day counter, starting with the 1st.
-    
-    $currentDay = 1;
-    
-    $output .= "</tr><tr>";
-    
-    // The variable $dayOfWeek is used to
-    // ensure that the calendar
-    // display consists of exactly 7 columns.
-    
-    if ($dayOfWeek > 0) {
-      $output .= "<td colspan='$dayOfWeek'>&nbsp;</td>";
-    }
-     
-    $month = str_pad($month, 2, "0", STR_PAD_LEFT);
-    
-    while ($currentDay <= $numberDays) {
-    
-    // Seventh column (Saturday) reached. Start a new row.
-    
-      if ($dayOfWeek == 7) {
-    
-      $dayOfWeek = 0;
-      $output .= "</tr><tr>";
-    
-      }
-    
-        $currentDayRel = str_pad($currentDay, 2, "0", STR_PAD_LEFT);
-    
-        $date = "$year-$month-$currentDayRel";
-    
-        $output .= "<td class='day' rel='$date'>$currentDay</td>";
-    
-        // Increment counters
-    
-        $currentDay++;
-        $dayOfWeek++;
-    
-    }
-     
-     
-    
-    // Complete the row of the last week in month, if necessary
-    
-        if ($dayOfWeek != 7) {
-         
-        $remainingDays = 7 - $dayOfWeek;
-        $output .= "<td colspan='$remainingDays'>&nbsp;</td>";
-    
-    }
-     
-    $output .= "</tr>";
-    
-    $output .= "</table>";
-    */  
     return $output;
   }
   
@@ -198,6 +116,29 @@ class calendar_notes {
 
 
 $db = new db;
-$calendar = new calendar_notes;
 
 ?>
+<!doctype html>
+<html>
+  <head>
+	
+	  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	  <title>Barchart Calendar Test</title>
+		
+		<style>
+		  #calendar-wrapper{
+		    margin:100px auto;
+		    width:600px;
+		  }
+		</style>
+		
+		<script>
+		
+		</script>
+  </head>
+	<body>
+	  <?php 
+	    $calendar = new calendar_notes;
+	  ?>
+	</body>
+</html>
