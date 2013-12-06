@@ -134,6 +134,10 @@ $db = new db;
 		  input{
 		    width:50px;
 		  }
+		  
+		  td{
+		    border:1px solid #ddd;
+		  }
 		</style>
 		
 		<script>
