@@ -12,7 +12,7 @@ $db = new db;
 $calendar = new calendar_notes;
 
 if(isset($_POST)){
-  $calendar->save_notes;
+  $calendar->save_notes();
 }
 
 ?>
@@ -26,7 +26,7 @@ if(isset($_POST)){
   </head>
 	<body>
 	  <?php 
-	    echo $calendar->buildCalendar;
+	    echo $calendar->buildCalendar();
 	  ?>
 	</body>
 </html>
