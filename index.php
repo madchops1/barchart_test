@@ -8,9 +8,8 @@ error_reporting(E_ALL);
 date_default_timezone_set('America/Chicago');
 include 'includes/db.class.php';
 include 'includes/calendar.class.php';
-$db = new db;
 $calendar = new calendar_notes;
-
+$calendear->db = new db;
 if(isset($_POST)){
   $calendar->save_notes();
 }

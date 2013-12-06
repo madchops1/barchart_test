@@ -6,6 +6,7 @@ class calendar_notes {
   var $days_of_week = array('S','M','T','W','T','F','S');
   var $month;
   var $year;
+  var $db;
 
   // -- constructor
   function __construct(){
@@ -83,7 +84,7 @@ class calendar_notes {
           $date = mktime(0,0,0,$this->month,$day,$this->year);
           $date = date('Y-m-d', $date);
           $insert = "INSERT INTO `calendar` SET date='".$date."', note='".mysql_real_escape_string($note)."' ";
-          $db->db_query($insert);
+          $this->db->db_query($insert);
         }
       }
     }
