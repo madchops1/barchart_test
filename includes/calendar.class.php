@@ -75,7 +75,7 @@ class calendar_notes {
 
   // -- Save Notes
   function save_notes(){
-    if(isset($_POST)){
+    if(isset($_POST['day'])){
       $day=1;
       foreach($_POST['day'] as $note){
         if($_POST['day'] != ''){
