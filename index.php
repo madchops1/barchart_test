@@ -57,6 +57,7 @@ class calendar_notes {
     // Create array containing abbreviations of days of week.
     $days_of_week = array('S','M','T','W','T','F','S');
     $first_day = mktime(0,0,0,$this->month,1,$this->year);
+    $first_day_of_week = date('N', $first_day);
     $days_in_month = date('t',$first_day);
     $date_info = getdate($first_day);
     
@@ -64,7 +65,7 @@ class calendar_notes {
     var_dump($date_info);
     echo "</pre>";
     
-    $output = "First Day: " . $first_day . " | Days in Month: " .$days_in_month . "";
+    $output = "First Day: " . $first_day . " | First Day of Week: " . $first_day_of_week . " | Days in Month: " .$days_in_month . "";
     $output .= "<h1>".$date_info['month']."</h1>";
     $output .= "<table id='calendar'>";
     $output .= "  <tr>";
@@ -79,7 +80,14 @@ class calendar_notes {
     
     
     $day = 1;
+    $i = 0;
     while($day <= $days_in_month){
+      $i++;
+      
+      if($first_day_of_week > 1){
+        $output .= "<td>&nbsp;</td>";
+        continue;
+      }
       
       // Days
       $output .= "<td><div><span>" . $day . "</span></div></td>";
