@@ -124,7 +124,7 @@ $db = new db;
 		<style>
 		  #calendar-wrapper{
 		    margin:100px auto;
-		    width:840px;
+		    width:980px;
 		  }
 		  
 		  input{
@@ -136,6 +136,9 @@ $db = new db;
 		  
 		  td{
 		    border:1px solid #ddd;
+		    width:140px;
+		    height:140px;
+		    
 		  }
 		</style>
 		
