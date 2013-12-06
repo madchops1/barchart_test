@@ -48,7 +48,7 @@ class calendar_notes {
       $i++;
 
       // -- Make sure the first day of the month is on the right day of the week
-      if($first_day_of_week > 0){
+      if($first_day_of_week > 0 && $first_day_of_week < 7){
         $output .= "<td>&nbsp;</td>";
         $first_day_of_week--;
         continue;
