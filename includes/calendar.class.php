@@ -10,7 +10,7 @@ class calendar_notes {
 
   // -- constructor
   function __construct(){
-    $this->month = date('m');
+    $this->month = date('m')+1;
     $this->year = date('Y');
   }
 
